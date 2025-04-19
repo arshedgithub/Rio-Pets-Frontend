@@ -36,7 +36,7 @@ export default function LoginPage() {
                     <p className="mt-2 text-sm text-gray-500">
                         Or
                         <br />
-                        <Link href="/register" className="font-normal" style={{ color: colors.primary.main }}>
+                        <Link href="/register" className="font-bold" style={{ color: colors.primary.main }}>
                             create a new account
                         </Link>
                     </p>
