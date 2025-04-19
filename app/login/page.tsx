@@ -19,7 +19,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex bg-[#f5f5f5] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex bg-[#f5f5f5] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full mx-auto space-y-8 bg-white p-8 rounded-lg shadow-lg">
 
                 {/* Logo and Header */}
@@ -100,7 +100,7 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    <Button 
+                    <Button
                         type="submit"
                         variant="primary"
                         fullWidth
@@ -140,18 +140,27 @@ export default function LoginPage() {
                     >
                         Sign in with Google
                     </Button>
-                    
-                    {/* <Button
+
+                    <Button
                         variant="outline"
                         fullWidth
                         leftIcon={
-                            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.603.07-.603a2.09 2.09 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clipRule="evenodd" />
+                            <svg className="h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    fillRule="evenodd"
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                    clipRule="evenodd"
+                                    fill="#1877F2"
+                                />
+                                <path
+                                    d="M15.893 14.89l.443-2.89h-2.773v-1.876c0-.79.387-1.562 1.63-1.562h1.26v-2.46s-1.144-.195-2.238-.195c-2.285 0-3.777 1.384-3.777 3.89V12h-2.54v2.89h2.54v6.988a10.1 10.1 0 003.115 0v-6.987h2.33z"
+                                    fill="white"
+                                />
                             </svg>
                         }
                     >
-                        Sign in with GitHub
-                    </Button> */}
+                        Sign in with Facebook
+                    </Button>
                 </div>
 
             </div>
