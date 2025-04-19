@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Eye, EyeOff, Lock } from 'lucide-react';
 import { colors } from '@/lib/theme/colors';
-import { Input } from '@/components/ui/input'; // Update path as needed
-import { Button } from '@/components/ui/button'; // Update path as needed
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -17,10 +17,6 @@ export default function LoginPage() {
         e.preventDefault();
         console.log({ email, password, rememberMe });
     };
-
-    useEffect(() => {
-        console.log(showPassword);
-    }, [showPassword])
 
     return (
         <div className="min-h-screen flex bg-[#f5f5f5] py-12 px-4 sm:px-6 lg:px-8">
