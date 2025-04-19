@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Eye } from 'lucide-react';
 import Image from 'next/image';
 import { colors } from '@/lib/theme/colors';
 
@@ -77,6 +78,18 @@ export default function LoginPage() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
+
+                        {/* <Input
+                            label="Password"
+                            placeholder="Enter your password"
+                            type={showPassword ? "text" : "password"}
+                            helperText="Password must be at least 8 characters"
+                            rightIcon={
+                                showPassword ?
+                                    <Eye className="h-5 w-5 text-gray-400 cursor-pointer" onClick={() => setShowPassword(false)} /> :
+                                    <EyeOff className="h-5 w-5 text-gray-400 cursor-pointer" onClick={() => setShowPassword(true)} />
+                            }
+                        /> */}
                     </div>
 
                     <div className="flex items-center justify-between">
