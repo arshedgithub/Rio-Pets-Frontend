@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   ShoppingCart,
@@ -53,7 +53,7 @@ export default function Navigation() {
     };
   }, []);
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Search for:", searchQuery);
   };
@@ -76,7 +76,7 @@ export default function Navigation() {
     }
   };
 
-  const toggleMobileCategory = (categoryId) => {
+  const toggleMobileCategory = (categoryId: string) => {
     if (expandedMobileCategory === categoryId) {
       setExpandedMobileCategory(null);
     } else {
@@ -84,15 +84,17 @@ export default function Navigation() {
     }
   };
 
-  const handleCategoryHover = (categoryId) => {
-    clearTimeout(hoverTimeoutRef.current);
+  const handleCategoryHover = (categoryId: string) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
     hoverTimeoutRef.current = setTimeout(() => {
       setHoveredCategory(categoryId);
     }, 100);
   };
 
   // Category content mapping
-  const categoryContent = {
+  const categoryContent: Record<string, React.ReactNode> = {
     allCategories: (
       <div className="grid grid-cols-5 gap-4 p-4">
         <div className="col-span-1 border-r pr-4">
@@ -134,6 +136,7 @@ export default function Navigation() {
         </div>
       </div>
     ),
+
     featured: (
       <div className="grid grid-cols-3 gap-4 p-4">
         {featuredLinks.map((section, index) => (
@@ -155,6 +158,7 @@ export default function Navigation() {
         ))}
       </div>
     ),
+
     priceRanges: (
       <div className="p-4 space-y-4">
         <h3 className="font-bold text-gray-900">Select Price Range</h3>
