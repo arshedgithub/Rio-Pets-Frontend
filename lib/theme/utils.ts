@@ -1,4 +1,4 @@
-import { colors } from './colors';
+import { colors } from "./colors";
 
 /**
  * Get a color from the theme
@@ -6,19 +6,19 @@ import { colors } from './colors';
  * @returns The color hex value
  */
 export function getColor(path: string): string {
-  const parts = path.split('.');
-  let result: any = colors;
-  
+  const parts = path.split(".");
+  let result: unknown = colors;
+
   for (const part of parts) {
-    if (result && result[part] !== undefined) {
-      result = result[part];
+    if (result && typeof result === "object" && part in result) {
+      result = (result as Record<string, unknown>)[part];
     } else {
       console.warn(`Color path "${path}" not found in theme`);
-      return '';
+      return "";
     }
   }
-  
-  return result;
+
+  return typeof result === "string" ? result : "";
 }
 
 // Example of a tailwind-compatible function for creating themed classes
