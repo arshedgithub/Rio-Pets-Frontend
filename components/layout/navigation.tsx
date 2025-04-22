@@ -27,11 +27,13 @@ export default function Navigation() {
     "allCategories",
   );
   const [hoveredCategory, setHoveredCategory] = useState("pets");
-  const [expandedMobileCategory, setExpandedMobileCategory] = useState(null);
+  const [expandedMobileCategory, setExpandedMobileCategory] = useState<
+    string | null
+  >(null);
   const [showSearchBar, setShowSearchBar] = useState(false);
 
-  const categoryMenuRef = useRef(null);
-  const hoverTimeoutRef = useRef(null);
+  const categoryMenuRef = useRef<HTMLDivElement | null>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
