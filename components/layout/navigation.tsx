@@ -20,11 +20,12 @@ import { colors } from "@/lib/theme/colors";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { categories, featuredLinks } from "@/config/const/navLinks";
+import { useThemeStore } from "@/store/themeStore";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useThemeStore();
   const [activeCategory, setActiveCategory] = useState<string | null>(
     "allCategories",
   );
@@ -62,10 +63,6 @@ export default function Navigation() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   const toggleCategory = (category: string) => {
