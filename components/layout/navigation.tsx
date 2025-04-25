@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
-  ShoppingCart,
+  Coins,
   User,
   Search,
   Heart,
@@ -13,6 +13,8 @@ import {
   Menu,
   X,
   Globe,
+  Bell,
+  MessageCircle,
 } from "lucide-react";
 import { colors } from "@/lib/theme/colors";
 import { Input } from "@/components/ui/input";
@@ -93,7 +95,7 @@ export default function Navigation() {
     }, 100);
   };
 
-  // Category content mapping
+  // Category content mapping with images
   const categoryContent: Record<string, React.ReactNode> = {
     allCategories: (
       <div className="grid grid-cols-5 gap-4 p-4">
@@ -124,13 +126,21 @@ export default function Navigation() {
             {categories
               .find((c) => c.id === hoveredCategory)
               ?.subcategories.map((subcat) => (
-                <Link
-                  href={subcat.href}
-                  key={subcat.id}
-                  className={`block py-1 ${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-primary-600"}`}
-                >
-                  {subcat.name}
-                </Link>
+                <div key={subcat.id} className="flex flex-col items-center">
+                  <div className="mb-2 w-24 h-24 overflow-hidden rounded-lg border border-gray-200">
+                    <img
+                      src={`/api/placeholder/96/96`}
+                      alt={subcat.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <Link
+                    href={subcat.href}
+                    className={`text-center py-1 ${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-primary-600"}`}
+                  >
+                    {subcat.name}
+                  </Link>
+                </div>
               ))}
           </div>
         </div>
@@ -320,6 +330,40 @@ export default function Navigation() {
               )}
             </button>
 
+            {/* Notifications */}
+            <Link
+              href="/notifications"
+              className="flex items-center hover:text-gray-600 relative"
+            >
+              <Bell
+                className="h-5 w-5"
+                style={{ color: colors.secondary.main }}
+              />
+              <span
+                className="absolute -top-2 -right-2 rounded-full h-5 w-5 flex items-center justify-center text-xs text-white"
+                style={{ backgroundColor: colors.accent.premium }}
+              >
+                5
+              </span>
+            </Link>
+
+            {/* Messages */}
+            <Link
+              href="/messages"
+              className="flex items-center hover:text-gray-600 relative"
+            >
+              <MessageCircle
+                className="h-5 w-5"
+                style={{ color: colors.secondary.main }}
+              />
+              <span
+                className="absolute -top-2 -right-2 rounded-full h-5 w-5 flex items-center justify-center text-xs text-white"
+                style={{ backgroundColor: colors.accent.premium }}
+              >
+                2
+              </span>
+            </Link>
+
             {/* Wishlist Link */}
             <Link
               href="/wishlist"
@@ -332,16 +376,16 @@ export default function Navigation() {
               <span className="ml-1">Saved</span>
             </Link>
 
-            {/* Cart Link */}
+            {/* Coins Link (Replacing Cart) */}
             <Link
-              href="/cart"
+              href="/coins"
               className="flex items-center hover:text-gray-600 relative"
             >
-              <ShoppingCart
+              <Coins
                 className="h-5 w-5"
                 style={{ color: colors.secondary.main }}
               />
-              <span className="ml-1">Cart</span>
+              <span className="ml-1">Coins</span>
               <span
                 className="absolute -top-2 -right-2 rounded-full h-5 w-5 flex items-center justify-center text-xs text-white"
                 style={{ backgroundColor: colors.accent.premium }}
@@ -364,9 +408,9 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* Cart Icon for Mobile */}
-            <Link href="/cart" className="relative">
-              <ShoppingCart
+            {/* Coins Icon for Mobile (replacing Cart) */}
+            <Link href="/coins" className="relative">
+              <Coins
                 className="h-6 w-6"
                 style={{
                   color: isDarkMode
@@ -652,10 +696,24 @@ export default function Navigation() {
               My Wishlist
             </Link>
             <Link
-              href="/orders"
-              className={`block px-3 py-2 rounded-md text-base font-medium ${isDarkMode ? "text-gray-300 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-200"}`}
+              href="/messages"
+              className={`block px-3 py-2 rounded-md text-base font-medium flex items-center ${isDarkMode ? "text-gray-300 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-200"}`}
             >
-              My Orders
+              <MessageCircle
+                className="h-5 w-5 mr-2"
+                style={{ color: colors.secondary.main }}
+              />
+              Messages
+            </Link>
+            <Link
+              href="/notifications"
+              className={`block px-3 py-2 rounded-md text-base font-medium flex items-center ${isDarkMode ? "text-gray-300 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-200"}`}
+            >
+              <Bell
+                className="h-5 w-5 mr-2"
+                style={{ color: colors.secondary.main }}
+              />
+              Notifications
             </Link>
             <Link
               href="/login"
