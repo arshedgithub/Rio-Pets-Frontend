@@ -531,7 +531,7 @@ export default function Navigation() {
                 About
               </Link>
               <Link
-                href="/help"
+                href="/help-center/contact"
                 className={`whitespace-nowrap text-base font-medium ${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900"}`}
               >
                 Help Center
@@ -665,7 +665,7 @@ export default function Navigation() {
               About
             </Link>
             <Link
-              href="/help"
+              href="/help-center/contact"
               className={`block px-3 py-2 rounded-md text-base font-medium ${isDarkMode ? "text-gray-300 hover:bg-gray-700" : "text-gray-700 hover:bg-gray-200"}`}
             >
               Help Center
