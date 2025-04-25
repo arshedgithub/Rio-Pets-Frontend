@@ -1,19 +1,37 @@
 "use client";
 
-import React from 'react';
-import Navigation from './navigation';
-import Footer from './footer';
+import React, { useEffect } from "react";
+
+import { useThemeStore } from "@/store/themeStore";
+import Navigation from "./navigation";
+import Footer from "./footer";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const { isDarkMode } = useThemeStore();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div
+      className={`flex flex-col min-h-screen ${isDarkMode ? "bg-gray-800" : "bg-white"} transition-colors duration-300`}
+    >
       <Navigation />
-      <main className="flex-grow">
-        {children}
+      <main
+        className={`flex-grow ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {children}
+        </div>
       </main>
       <Footer />
     </div>
