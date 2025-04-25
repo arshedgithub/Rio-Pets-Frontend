@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div
-      className={`flex flex-col min-h-screen ${isDarkMode ? "bg-gray-800" : "bg-white"} transition-colors duration-300`}
+      className={`flex flex-col min-h-screen ${isDarkMode ? "bg-gray-700" : "bg-white"} transition-colors duration-300`}
     >
       <Navigation />
       <main
